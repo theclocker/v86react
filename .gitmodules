@@ -1,0 +1,3 @@
+[submodule "src/v86"]
+	path = src/v86
+	url = git@github.com:theclocker/v86.git
