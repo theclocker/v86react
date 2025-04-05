@@ -1,0 +1,53 @@
+{
+  "name": "v86react",
+  "version": "1.0.0",
+  "description": "A React wrapper for the v86 Emulator",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "full-build": "cd ./src/v86/tools/docker/alpine && ./build.sh && cd ../../../ && make all",
+    "bios-build": "/node_modules/v86/bios fetch-and-build-seabios.sh"
+  },
+  "author": "Yonatan Vega",
+  "license": "ISC",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-essentials": "^8.5.3",
+    "@storybook/addon-interactions": "^8.5.3",
+    "@storybook/addon-onboarding": "^8.5.3",
+    "@storybook/blocks": "^8.5.3",
+    "@storybook/react": "^8.5.3",
+    "@storybook/react-vite": "^8.5.3",
+    "@storybook/test": "^8.5.3",
+    "@types/node": "^22.12.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "rimraf": "^6.0.1",
+    "storybook": "^8.5.3",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@bokuweb/zstd-wasm": "^0.0.27",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "v86": "file:src/v86"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "packageManager": "yarn@4.6.0"
+}
