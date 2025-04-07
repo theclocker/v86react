@@ -25,5 +25,5 @@
       "node",
     ]
   },
-  "exclude": ["node_modules", "build"] /* Exclude the node_modules directory */
+  "exclude": ["node_modules", "build", "src/lib"] /* Exclude node_modules, build output, and the lib directory */
 }
