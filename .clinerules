@@ -1,0 +1,37 @@
+# Cline Rules for v86react
+
+## General Guidelines
+- **Memory Bank:** Always read and update the Memory Bank files as per the custom instructions. Prioritize `activeContext.md` and `progress.md` for current state.
+- **Clarity:** Explain the reasoning behind significant code changes or architectural decisions in the Memory Bank or commit messages.
+- **Tool Usage:** Prefer `replace_in_file` for targeted edits and `write_to_file` for new files or major rewrites. Confirm tool success before proceeding.
+- **Communication:** Use `ask_followup_question` when requirements are unclear or essential information is missing.
+
+## Coding Style & Conventions
+- **Language:** TypeScript
+- **Formatting:** (Assumed: Prettier defaults - common for TS/React projects, but verify if specific config exists). Use consistent formatting.
+- **Naming Conventions:** PascalCase for React components and types/interfaces, camelCase for variables and functions.
+- **Comments:** [Guidance on when and how to write comments]
+- **Error Handling:** [Preferred approach, e.g., specific error types, logging]
+
+## Version Control
+- **Commit Messages:** [Specify format, e.g., Conventional Commits (feat:, fix:, chore:)]
+- **Branching Strategy:** [Specify model, e.g., Gitflow, Trunk-based development]
+- **Pull Requests:** [Guidelines for PR descriptions, reviewers, etc., if applicable]
+
+## Testing
+- **Framework:** Storybook for component visualization and interaction testing. (No specific unit/integration test runner identified in `package.json`).
+- **Coverage:** Not specified.
+- **Types of Tests:** Focus on component-level testing via Storybook.
+
+## Dependencies
+- **Management:** Yarn v4.6.0 (`packageManager` field in `package.json`).
+- **Updates:** Not specified. Follow standard practices (e.g., update cautiously, test after updates).
+
+## Project Specific Rules
+- **v86 Integration:** The `v86` library is included locally (`file:src/v86`). Be mindful of this local dependency.
+- **Web Workers:** The project uses Web Workers (`v86.worker.ts`) for performance. Ensure worker communication logic is handled correctly.
+- **Zstandard Decompression:** Uses `@bokuweb/zstd-wasm` for decompression, likely for disk images.
+- **Strict Types:** Adhere to strict TypeScript rules (`strict: true` in `tsconfig.json`).
+
+---
+*Review and update these rules as the project evolves.*

@@ -26,6 +26,7 @@ export type V86Config = {
 
 export interface UseV86Options {
   stateUrl?: string;
+  screenContainer?: HTMLDivElement | null;
   onStatusChange?: (status: string, details?: string) => void;
   onError?: (message: string) => void;
   onSerialOutput?: (char: string) => void;
@@ -98,6 +99,7 @@ export const useV86 = (options: UseV86Options = {}) => {
     worker.postMessage({
       type: 'init',
       config: {
+        screen_container: options.screenContainer ?? undefined,
         memory_size: 128 * 1024 * 1024,
         vga_memory_size: 4 * 1024 * 1024,
         ...absolutePaths,

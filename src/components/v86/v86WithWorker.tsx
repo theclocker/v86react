@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useV86, V86Config } from "./useV86";
 
 type Props = {
-    stateUrl: string,
+    stateUrl?: string,
     config?: V86Config
 }
 
