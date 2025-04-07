@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 
 // Import worker
 // @ts-ignore
-import V86Worker from './v86.worker?worker';
+import V86Worker from '../v86.worker?worker';
 
 // Define the types of messages we can receive from the worker
 type WorkerMessage =

@@ -14,6 +14,7 @@
     "skipLibCheck": true, /* Skip type checking all .d.ts files. */
     "paths": {
       // "./src/v86/build/libv86": ["./src/types/v86"],
+      "@": ["./src/*"],
       "root/*": ["./*"]
     },
     "typeRoots": [

@@ -22,7 +22,7 @@ let isWorkerBusy = false;
 // Add explicit return type and handle potential errors
 async function loadV86(): Promise<V86ConstructorType> {
   try {
-    const v86module = await import('../../lib/libv86');
+    const v86module = await import('./lib/libv86');
     if (!v86module.default || typeof v86module.default !== 'function') {
         throw new Error("Default export is not a constructable function.");
     }
