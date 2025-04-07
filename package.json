@@ -1,6 +1,6 @@
 {
   "name": "v86react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React wrapper for the v86 Emulator",
   "main": "dist/index.js",
   "files": [
@@ -42,10 +42,8 @@
   },
   "dependencies": {
     "@bokuweb/zstd-wasm": "^0.0.27",
-    "@rollup/rollup-win32-x64-msvc": "^4.39.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "v86": "file:src/v86"
+    "react-dom": "^19.0.0"
   },
   "peerDependencies": {
     "react": "^19.0.0"

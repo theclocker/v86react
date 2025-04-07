@@ -148,7 +148,7 @@ async function loadState(stateUrl: string) {
     }
     
     await new Promise<void>((resolve, reject) => {
-      emulator.restore_state(stateData, (error: Error | null) => {
+      emulator!.restore_state(stateData, (error: Error | null) => {
         if (error) {
           reject(error);
         } else {
