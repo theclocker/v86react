@@ -90,6 +90,93 @@ type V86Config = {
 
 Refer to the [v86 options documentation](https://github.com/copy/v86/blob/master/docs/options.md) for a complete list of available configuration parameters.
 
+### Using the `useV86` Hook Directly
+
+For more granular control, you can use the `useV86` hook directly. This is useful if you want to build a custom UI around the emulator or handle events in a specific way.
+
+```jsx
+import React, { useState, useEffect, useCallback } from 'react';
+import { useV86, V86Config } from 'v86react'; // Assuming useV86 is exported
+
+function CustomV86Interface() {
+  const [terminalOutput, setTerminalOutput] = useState('');
+  const [command, setCommand] = useState('');
+
+  const v86Config: V86Config = {
+    wasm_path: "/path/to/v86.wasm",
+    bios_path: "/path/to/seabios.bin",
+    vgabios_path: "/path/to/vgabios.bin",
+    filesystem_basefs: "/path/to/fs.json",
+    filesystem_baseurl: "/path/to/images/",
+    // Other config...
+  };
+
+  const handleSerialOutput = useCallback((char: string) => {
+    setTerminalOutput(prev => prev + char);
+  }, []);
+
+  const handleStatusChange = useCallback((status: string, details?: string) => {
+    console.log(`Emulator Status: ${status}`, details || '');
+    // Update UI based on status
+  }, []);
+  
+  const handleEmulatorReady = useCallback(() => {
+    console.log("Emulator is ready!");
+    // Enable command input, etc.
+  }, []);
+
+  const { 
+    isReady, 
+    status, 
+    sendCommand, 
+    saveState, 
+    cleanCache 
+  } = useV86({
+    config: v86Config,
+    // stateUrl: "/optional/path/to/state.bin",
+    onSerialOutput: handleSerialOutput,
+    onStatusChange: handleStatusChange,
+    onEmulatorReady: handleEmulatorReady,
+    onError: (msg) => console.error("V86 Error:", msg),
+    onShellPromptDetected: () => console.log("Shell prompt detected."),
+  });
+
+  const handleSendCommand = () => {
+    if (isReady && command) {
+      sendCommand(command + '\n'); // Add newline for shell commands
+      setTerminalOutput(prev => prev + `\n> ${command}\n`);
+      setCommand('');
+      cleanCache(); // Example: Clean cache after sending command
+    }
+  };
+
+  return (
+    <div>
+      <h2>Custom v86 Interface</h2>
+      <p>Status: {status} {isReady ? '(Ready)' : '(Initializing...)'}</p>
+      
+      <pre style={{ height: '300px', overflowY: 'scroll', border: '1px solid #ccc', background: '#f0f0f0', padding: '5px' }}>
+        {terminalOutput}
+      </pre>
+      
+      <input 
+        type="text" 
+        value={command} 
+        onChange={(e) => setCommand(e.target.value)} 
+        disabled={!isReady}
+        onKeyPress={(e) => e.key === 'Enter' && handleSendCommand()}
+      />
+      <button onClick={handleSendCommand} disabled={!isReady}>Send Command</button>
+      <button onClick={saveState} disabled={!isReady}>Save State</button>
+    </div>
+  );
+}
+
+export default CustomV86Interface;
+```
+
+This hook provides access to the emulator's state (`isReady`, `status`) and functions (`sendCommand`, `saveState`, `cleanCache`, `runTest`) while allowing you to define callbacks for various emulator events.
+
 ## Development
 
 To set up the development environment for `v86react` itself:

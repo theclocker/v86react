@@ -1,6 +1,6 @@
 {
   "name": "v86react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A React wrapper for the v86 Emulator",
   "main": "dist/index.js",
   "files": [
@@ -23,6 +23,10 @@
   },
   "author": "Yonatan Vega",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theclocker/v86react.git"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
     "@storybook/addon-essentials": "^8.5.3",
@@ -43,7 +47,8 @@
   "dependencies": {
     "@bokuweb/zstd-wasm": "^0.0.27",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "v86": "file:src/lib"
   },
   "peerDependencies": {
     "react": "^19.0.0"
