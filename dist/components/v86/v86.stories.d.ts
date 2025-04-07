@@ -3,7 +3,7 @@ declare const meta: {
     title: string;
     component: ({ stateUrl, config }: {
         stateUrl?: string;
-        config?: import("./useV86").V86Config;
+        config?: import("../../hooks/useV86").V86Config;
     }) => import("react/jsx-runtime").JSX.Element;
     parameters: {
         layout: string;

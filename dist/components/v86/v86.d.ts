@@ -1,4 +1,4 @@
-import { V86Config } from "./useV86";
+import { V86Config } from "../../hooks/useV86";
 type Props = {
     stateUrl?: string;
     config?: V86Config;

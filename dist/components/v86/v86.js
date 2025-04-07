@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.V86 = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const useV86_1 = require("./useV86");
+const useV86_1 = require("../../hooks/useV86");
 const V86 = ({ stateUrl, config }) => {
     const [screenContainer, setScreenContainer] = (0, react_1.useState)(null);
     const [terminalValue, setTerminalValue] = (0, react_1.useState)("");
